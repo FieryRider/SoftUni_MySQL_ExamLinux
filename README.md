@@ -8,7 +8,7 @@
 
 ## Through `mysql` cmdline / terminal
 This is a little more complicated.
-`MySqlMariadb` has the ability to export a result set to a file with custom column and line separaters. This is done by appending `INTO OUTFILE outfile.txt FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n';` to the end of an `SELECT` query. There is a problem however. `MariaDB` does not have permission to write into any directory other that it's own dir (most likely `/var/lib/mysql`) and it's own **tmp** dir (/tmp/systemd-private-########################-mysql.service-######) (which require root access to read which is anoying).  
+`MySqlMariadb` has the ability to export a result set to a file with custom column and line separaters. This is done by appending `INTO OUTFILE outfile.txt FIELDS TERMINATED BY '\t' OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n';` to the end of an `SELECT` query. There is a problem however. `MariaDB` does not have permission to write into any directory other that it's own dir _(most likely `/var/lib/mysql`)_ and it's own **tmp** dir _(/tmp/systemd-private-########################-mysql.service-######)_ (which require root access to read which is anoying).  
 To fix that we need to edit it's **systemd service file**. We'll not going to edit the original file but instead we're going to override some of it's config with an `override.conf` file. To do this execute the following command `sudo systemctl edit mysqld.service` assuming the **MySql/MariaDB** service file is called `mysqld.service`. It'll open empty file with the default cmdline editor and we need to enter the following configuration
 ```systemd
 [Service]
