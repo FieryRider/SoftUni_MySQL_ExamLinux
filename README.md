@@ -4,7 +4,7 @@
 1. Above the **result set table** there is a button ![Export button](https://i.gyazo.com/0cb3c89770dd8b833bc2ded460accf1b.png) for `Export/Import` which allows us to export the **result set table** as `TSV` file. Click it, then choose to export as `Tab separated` and save the **result set table** somewhere.
 2. Open the file with a **text editor** and copy everything _(CTRL-A CTRL-C)_ 
 3. Paste it into **SoftUni's Judge**.  
-**IMPORTANT!!!** After pasting the result to **Judge** delete the first line of the result as it contains the **result set table** column names which cannot be normally copied from **MySql Workbench** and **SHOULD NOT BE INCLUDED IN THE SUBMISSION!**
+**IMPORTANT!!!** After pasting the result to **Judge** **DELETE THE FIRST LINE OF THE RESULT** as it contains the **result set table** column names which cannot be normally copied from **MySql Workbench** and **SHOULD NOT BE INCLUDED IN THE SUBMISSION!**
 
 ## Through `mysql` cmdline / terminal
 This is a little more complicated.
