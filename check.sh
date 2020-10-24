@@ -72,6 +72,10 @@ fi
 
 mysql -u "$user" -p"$password" -e "USE \`$database_name\`; $check_command INTO OUTFILE '${tmpdir}/output.tsv' FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n';"
 
+# add empty line at the end of the file with tab separators for the amount of columns
+head -1 $tmpdir/output.tsv | grep -Po '\t' >> $tmpdir/output.tsv
+set -i '$d' $tmpdir/output.tsv
+
 if [[ $(loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type | grep -Po '(?<=Type=).*') = 'x11' ]]; then
   cat "$tmpdir"/output.tsv | xsel -i -b
 elif [[ $(loginctl show-session $(loginctl | grep $(whoami) | awk '{print $1}') -p Type | grep -Po '(?<=Type=).*') = 'wayland' ]]; then
